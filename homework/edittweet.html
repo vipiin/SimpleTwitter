@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        #edit{
+            display: flex;
+            align-items: center; 
+            flex-direction: column;      
+        }
+        .eformButtons{
+    margin-top: 7px;
+}
+    </style>
+</head>
+<body>
+    <div id="edit">
+        <div id="alertMessage" class="hidden"><span id="alertMessageText"></span></div>
+        <h1>Edit Tweet</h1>
+        <textarea name="edittwee" id="addt" cols="28" rows="6"></textarea>
+        <div class="eformButtons">
+            <button id="addcancelModification" onclick="cancel">Cancel</button>
+            <button id="editsaveModifiedItemadd">Save Changes</button>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+    <script>
+        const queryParams = new URLSearchParams(window.location.search);
+const liId = queryParams.get('liId');
+const spanText = decodeURIComponent(queryParams.get('spanText'));
+const edtte = document.getElementById('addt');
+if (edtte) {
+  edtte.value = spanText;
+}
+const v=document.getElementById('editsaveModifiedItemadd');
+  if(v){
+    v.addEventListener('click',(e)=>{
+      const li = e.target.closest('li');
+      const liid=Number(liId);
+      const data = JSON.parse(localStorage.getItem('tweets'));
+    const lidata = JSON.parse(localStorage.getItem('liketweets'));
+    console.log(data,lidata,liId,liid);
+    for (let i = 0; i < data.length; i++) {
+        console.log(data[i][0]);
+      if (data[i][0] === liid) {
+        data[i][1] = document.getElementById('addt').value; // modify the second value to 25 for the array with first value of 2
+      }
+    //   if (lidata && lidata[i][0] === liid) {
+    //     lidata[i][1] = document.getElementById('addt').value; // modify the second value to 25 for the array with first value of 2
+    //   }
+
+    }
+    localStorage.setItem('tweets', JSON.stringify(data));
+// localStorage.setItem('liketweets',JSON.stringify(lidata));
+window.location.href='./index.html'
+    })
+  }
+    </script>
+
+</body>
+</html>
+
+
+

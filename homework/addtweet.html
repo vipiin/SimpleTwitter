@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        #add{
+            display: flex;
+            align-items: center; 
+            flex-direction: column;      
+        }
+        .formButtons{
+    margin-top: 7px;
+}
+    </style>
+</head>
+<body>
+    <div id="add">
+        <div id="alertMessage" class="hidden"><span id="alertMessageText"></span></div>
+        <h1>Add Tweet</h1>
+        <textarea name="addtwee" id="addt" cols="28" rows="6"></textarea>
+        <div class="formButtons">
+            <button id="addcancelModification" onclick="cancel">Cancel</button>
+            <button id="addsaveModifiedItemadd">Save Changes</button>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+
+</body>
+</html>
+
+
+
